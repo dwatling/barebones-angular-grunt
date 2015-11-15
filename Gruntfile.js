@@ -87,19 +87,13 @@ module.exports = function (grunt) {
 			vendor: {
 				files: {
 					"<%= global.outputFolder %>/js/vendor.min.js": [
-						"<%= global.sourceFolder %>/vendor/jquery-2.1.4.js",
-						"<%= global.sourceFolder %>/vendor/lodash.js",
-						"<%= global.sourceFolder %>/vendor/angular.js",
-						"<%= global.sourceFolder %>/vendor/angular-animate.js",
-						"<%= global.sourceFolder %>/vendor/angular-aria.js",
-						"<%= global.sourceFolder %>/vendor/angular-cookies.js",
-						"<%= global.sourceFolder %>/vendor/angular-loader.js",
-						"<%= global.sourceFolder %>/vendor/angular-material.js",
-						"<%= global.sourceFolder %>/vendor/angular-messages.js",
-						"<%= global.sourceFolder %>/vendor/angular-resource.js",
-						"<%= global.sourceFolder %>/vendor/angular-route.js",
-						"<%= global.sourceFolder %>/vendor/angular-sanitize.js",
-						"<%= global.sourceFolder %>/vendor/angular-touch.js",
+						"node_modules/jquery/dist/jquery.js",
+						"node_modules/lodash/index.js",
+						"node_modules/angular/angular.js",
+						"node_modules/angular-animate/angular-animate.js",
+						"node_modules/angular-aria/angular-aria.js",
+						"node_modules/angular-material/angular-material.js",
+						"node_modules/angular-route/angular-route.js",
 					]
 				}
 			}

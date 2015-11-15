@@ -1,13 +1,18 @@
 {
   "name": "barebones-angular-grunt",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Barebones Angular / Grunt web project",
-  "main": "index.js",
+  "repository": {
+	"type" : "git",
+	"url" : "https://github.com/dwatling/barebones-angular-grunt.git"
+  },
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dan Watling",
   "devDependencies": {
+	"angular-mocks": "1.4.7",
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",
     "grunt-cli": "^0.1.13",
@@ -28,5 +33,14 @@
     "matchdep": "^0.3.0",
     "phantomjs": "^1.9.18",
     "sinon": "^1.16.1"
+  },
+  "dependencies": {
+	"angular": "1.4.7",
+	"angular-animate": "1.4.7",
+	"angular-aria": "1.4.7",
+	"angular-route": "1.4.7",
+	"angular-material": "0.11.4",
+	"jquery": "2.1.4",
+	"lodash": "3.10.1"
   }
 }
