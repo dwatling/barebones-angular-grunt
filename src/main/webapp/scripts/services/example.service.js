@@ -1,5 +1,5 @@
 angular.module('app.services')
-.service('ExampleService', ['$http', '$q', function($http, $q) {
+.service('ExampleService', function($http, $q) {
 	this.exampleGET = function(query) {
 		var params = {
 			q: query
@@ -23,4 +23,4 @@ angular.module('app.services')
 			data: $.param(params)
 		});
 	};
-}]);
+});

@@ -1,8 +1,10 @@
 ## Barebones Angular Grunt ##
 
-This is just a sample template for use in web projects that want to utilize AngularJS, Material, and Grunt. 
+This is a template web project that utilizes AngularJS, Material, and Grunt.
 
-The example provides a basic structure that you are free to modify to your own liking. 
+The example provides a basic structure that you are free to modify to your own liking.
+
+Keywords: Barebones, quick-start, bootstrap
 
 # Requirements
 

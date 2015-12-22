@@ -11,10 +11,10 @@ angular.module("app", [
 	'app.interceptors',
 	'app.services',
 	'app.components'])
-.config(['$httpProvider', '$mdThemingProvider', function($httpProvider, $mdThemingProvider) {
+.config(function($httpProvider, $mdThemingProvider) {
 //	$mdThemingProvider.theme('default')
 //    	.dark();
 
 	// Insert HTTP interceptors here
 //	$httpProvider.interceptors.push('HTTP_INTERCEPTOR');
-}]);
+});

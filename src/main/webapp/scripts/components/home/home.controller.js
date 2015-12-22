@@ -1,5 +1,5 @@
 angular.module('app.components')
-.controller('HomeController', ['$scope', 'ExampleService', function($scope, ExampleService) {
+.controller('HomeController', function($scope, ExampleService) {
 	$scope.data = {};
 
 	$scope.initialize = function() {
@@ -9,4 +9,4 @@ angular.module('app.components')
 	};
 
 	$scope.initialize();
-}]);
+});

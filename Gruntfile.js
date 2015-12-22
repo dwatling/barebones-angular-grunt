@@ -1,15 +1,15 @@
-module.exports = function (grunt) {  
-    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);  
+module.exports = function (grunt) {
+	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
-    // Project configuration.  
-    grunt.initConfig({  
-        pkg: grunt.file.readJSON('package.json'),  
-	global: {
-		tempBuildFolder: 'target/build',
-		outputFolder: 'target/web',
-		sourceFolder: 'src/main/webapp',
-		httpServerFolder: process.env.TOMCAT_HOME + 'webapps/ROOT'
-	},
+	// Project configuration
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+		global: {
+			tempBuildFolder: 'target/build',
+			outputFolder: 'target/web',
+			sourceFolder: 'src/main/webapp',
+			httpServerFolder: process.env.TOMCAT_HOME + 'webapps/ROOT'
+		},
 		sass: {
 			options: {
 				outputStyle: 'compressed'
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 			},
 			app: {
 				files: ["<%= global.sourceFolder %>/scripts/**/*.js"],
-				tasks: ['jshint', 'concat', 'copy:deploy'],
+				tasks: ['jshint', 'ngAnnotate', 'concat', 'copy:deploy'],
 				options: {
 					spawn: false,
 					interrupt: true
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 			},
 			templates: {
 				files: ["<%= global.sourceFolder %>/**/*.tpl.html"],
-				tasks: ['ngtemplates', 'concat', 'copy:deploy'],
+				tasks: ['ngtemplates', 'ngAnnotate', 'concat', 'copy:deploy'],
 				options: {
 					spawn: false,
 					interrupt: true
@@ -66,22 +66,34 @@ module.exports = function (grunt) {
 				options: {
 					standalone: true,
 					htmlmin: {
-						collapseBooleanAttributes:      true,
-						collapseWhitespace:             true,
-						removeAttributeQuotes:          true,
-						removeComments:                 true,
-						removeEmptyAttributes:          true,
-						removeRedundantAttributes:      true,
-						removeScriptTypeAttributes:     true,
+						collapseBooleanAttributes:	  true,
+						collapseWhitespace:			 true,
+						removeAttributeQuotes:		  true,
+						removeComments:				 true,
+						removeEmptyAttributes:		  true,
+						removeRedundantAttributes:	  true,
+						removeScriptTypeAttributes:	 true,
 						removeStyleLinkTypeAttributes:  true
 					},
 				}
 			}
 		},
+		ngAnnotate: {
+			app: {
+				files: [{
+					expand: true,
+					src: [
+						"<%= global.tempBuildFolder %>/app.templates.js",
+						"<%= global.sourceFolder %>/scripts/**/*.js"
+					],
+					dest: "<%= global.tempBuildFolder %>/js"
+				}]
+			}
+		},
 		uglify: {
 			app: {
 				files: {
-					"<%= global.outputFolder %>/js/app.min.js": ["<%= global.tempBuildFolder %>/app.templates.js", "<%= global.sourceFolder %>/scripts/**/*.js"]
+					"<%= global.outputFolder %>/js/app.min.js": ["<%= global.tempBuildFolder %>/js/**/*.js"]
 				}
 			},
 			vendor: {
@@ -104,10 +116,7 @@ module.exports = function (grunt) {
 					sourceMap: true
 				},
 				files: {
-					"<%= global.outputFolder %>/js/app.min.js": [
-						"<%= global.tempBuildFolder %>/app.templates.js",
-						"<%= global.sourceFolder %>/scripts/**/*.js"
-					]
+					"<%= global.outputFolder %>/js/app.min.js": ["<%= global.tempBuildFolder %>/js/**/*.js"]
 				}
 			}
 		},
@@ -130,7 +139,7 @@ module.exports = function (grunt) {
 				"predef": [ "angular", "document"]
 			},
 			files:  {
-		                src: ["<%= global.sourceFolder %>/scripts/**/*.js"]
+						src: ["<%= global.sourceFolder %>/scripts/**/*.js"]
 		  	}
 		},
 		karma: {
@@ -138,10 +147,10 @@ module.exports = function (grunt) {
 				configFile: 'karma.conf.js'
 			}
 		}
-    });  
+	});  
 
-    // Default task.  
-    grunt.registerTask('build', ['sass:dist', 'jshint', 'ngtemplates', 'uglify', 'copy:build']);
-    grunt.registerTask('test', ['karma']);
+	// Default task.  
+	grunt.registerTask('build', ['sass:dist', 'jshint', 'ngtemplates', 'ngAnnotate', 'uglify', 'copy:build']);
+	grunt.registerTask('test', ['karma']);
 	grunt.registerTask('default', ['build', 'test']);
 };
