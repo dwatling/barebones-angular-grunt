@@ -1,12 +1,17 @@
-angular.module('app.components')
-.controller('HomeController', function($scope, ExampleService) {
-	$scope.data = {};
+(function() {
+	"use strict";
 
-	$scope.initialize = function() {
-		ExampleService.exampleGET().then(function(response) {
-			$scope.data = new Example(response.data);
-		});
-	};
+	function HomeControllerFunc($scope, HomeService, Home) {
+		$scope.data = {};
 
-	$scope.initialize();
-});
+		$scope.initialize = function() {
+			HomeService.exampleGET().then(function(response) {
+				$scope.data = new Home(response.data);
+			});
+		};
+
+		$scope.initialize();
+	}
+
+	angular.module('app.components').controller('HomeController', HomeControllerFunc);
+})();

@@ -1,12 +1,11 @@
 describe("HomeController", function() {
-	var $rootScope, $scope, exampleService, $controller, $q;
+	var $rootScope, $scope, homeService, $controller, $q;
 
 	beforeEach(function() {
-		angular.mock.module("app.services");
 		angular.mock.module("app.components");
 
 		inject(function($injector) {
-			exampleService = $injector.get("ExampleService");
+			homeService = $injector.get("HomeService");
 			$rootScope = $injector.get("$rootScope");
 			$controller = $injector.get("$controller");
 			$q = $injector.get("$q");
@@ -17,7 +16,7 @@ describe("HomeController", function() {
 	var createController = function() {
 		return $controller('HomeController', {
 			'$scope': $scope,
-			'ExampleService': exampleService
+			'HomeService': homeService
 		});
 	};
 
@@ -27,7 +26,7 @@ describe("HomeController", function() {
 	it("should invoke ExampleService.exampleGET", function() {
 		var mockData = {};
 		var mockResponse = {status: 200, data: mockData};
-		var exampleServiceStub = sinon.stub(exampleService, 'exampleGET').returns($q.when(mockResponse));
+		var exampleServiceStub = sinon.stub(homeService, 'exampleGET').returns($q.when(mockResponse));
 
 		createController();
 

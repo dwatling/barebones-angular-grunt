@@ -2,10 +2,10 @@ describe("ExampleService", function() {
 	var service, $httpBackend;
 
 	beforeEach(function() {
-		angular.mock.module("app.services");
+		angular.mock.module("app.components");
 
 		inject(function($injector) {
-			service = $injector.get("ExampleService");
+			service = $injector.get("HomeService");
 			$httpBackend = $injector.get("$httpBackend");
 		});
 	});
