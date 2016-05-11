@@ -7,8 +7,7 @@ module.exports = function (grunt) {
 		global: {
 			tempBuildFolder: 'target/build',
 			outputFolder: 'target/web',
-			sourceFolder: 'src/main/webapp',
-			httpServerFolder: process.env.TOMCAT_HOME + 'webapps/ROOT'
+			sourceFolder: 'src/main/webapp'
 		},
 		sass: {
 			options: {
@@ -24,7 +23,7 @@ module.exports = function (grunt) {
 		watch: {
 			index: {
 				files: ["<%= global.sourceFolder %>/index.html"],
-				tasks: ['copy:build', 'copy:deploy'],
+				tasks: ['copy:build'],
 				options: {
 					spawn: false,
 					interrupt: true
@@ -32,7 +31,7 @@ module.exports = function (grunt) {
 			},
 			app: {
 				files: ["<%= global.sourceFolder %>/scripts/**/*.js"],
-				tasks: ['jshint', 'ngAnnotate', 'concat', 'copy:deploy'],
+				tasks: ['jshint', 'ngAnnotate', 'concat'],
 				options: {
 					spawn: false,
 					interrupt: true
@@ -40,7 +39,7 @@ module.exports = function (grunt) {
 			},
 			templates: {
 				files: ["<%= global.sourceFolder %>/**/*.tpl.html"],
-				tasks: ['ngtemplates', 'ngAnnotate', 'concat', 'copy:deploy'],
+				tasks: ['ngtemplates', 'ngAnnotate', 'concat'],
 				options: {
 					spawn: false,
 					interrupt: true
@@ -48,7 +47,7 @@ module.exports = function (grunt) {
 			},
 			styles: {
 				files: ["<%= global.sourceFolder %>/**/*.scss"],
-				tasks: ['sass', 'copy:deploy'],
+				tasks: ['sass'],
 				options: {
 					spawn: false,
 					interrupt: true
@@ -100,7 +99,7 @@ module.exports = function (grunt) {
 				files: {
 					"<%= global.outputFolder %>/js/vendor.min.js": [
 						"node_modules/jquery/dist/jquery.js",
-						"node_modules/lodash/index.js",
+						"node_modules/lodash/lodash.js",
 						"node_modules/angular/angular.js",
 						"node_modules/angular-animate/angular-animate.js",
 						"node_modules/angular-aria/angular-aria.js",
@@ -125,13 +124,6 @@ module.exports = function (grunt) {
 				files: [
 					{expand: true, flatten: true, cwd: "<%= global.sourceFolder %>", src: ['index.html', 'favicon.ico'], dest: '<%= global.outputFolder%>'}
 				]
-			},
-			deploy: {
-				files: [
-					{expand: true, flatten: true, cwd: "<%= global.outputFolder %>/js/", src: ['vendor.min.*', 'app.min.*'], dest: '<%= global.httpServerFolder %>/js/'},
-					{expand: true, flatten: true, cwd: "<%= global.outputFolder %>/css/", src: ['vendor.min.*', 'app.min.*'], dest: '<%= global.httpServerFolder %>/css/'},
-					{expand: true, flatten: true, cwd: "<%= global.sourceFolder %>", src: ['index.html', 'favicon.ico'], dest: '<%= global.httpServerFolder %>/'}
-				]
 			}
 		},
 		jshint: {
@@ -139,7 +131,7 @@ module.exports = function (grunt) {
 				"predef": [ "angular", "document"]
 			},
 			files:  {
-						src: ["<%= global.sourceFolder %>/scripts/**/*.js"]
+				src: ["<%= global.sourceFolder %>/scripts/**/*.js"]
 		  	}
 		},
 		karma: {

@@ -20,13 +20,13 @@ You only need to type:
 
 After installing Node and downloading the necessary packages, run:
 
-    grunt
+    npm run build
 
 This will generate a "target/web" folder where your application is deployed. All JS files will have JSHint run on them, tests will be run, JS and HTML files will be compressed, SCSS will be converted into compressed CSS, etc. In other words, it's an optimized release of the project.
 
 # Running Tests
 
-    grunt karma
+    npm run test
 
 Tests will automatically be run as part of the normal build process, but if you want to run tests only just run the command above. Output will be to console and also the "target/test" folder. In that folder you'll see a junit XML as well as coverage reports.
 
@@ -34,7 +34,7 @@ Tests will automatically be run as part of the normal build process, but if you 
 
 The normal build process does not generate source maps which makes debugging and development a bit difficult. If you run
 
-    grunt watch
+    npm run watch
 
 During development, then anytime you make a change it'll output to the "target/web" folder an uncompressed source-mapped file. This makes it very easy to build your app without jumping through hoops to support both a release specific build and a development build.
 

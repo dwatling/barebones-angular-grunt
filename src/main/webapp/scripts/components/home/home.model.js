@@ -1,8 +1,8 @@
 (function() {
 	"use strict";
 
-	function HomeFunc() {
-		function Home(json) {
+	angular.module("app").factory("HomeModel", function() {
+		function HomeModel(json) {
 			if (json === undefined) {
 				json = {};
 			}
@@ -13,12 +13,10 @@
 			this.url = json.url;
 		}
 
-		Home.prototype = {
+		HomeModel.prototype = {
 			// Add functions here
 		};
 
-		return Home;
-	}
-
-	angular.module("app.components").factory("Home", HomeFunc);
+		return HomeModel;
+	});
 })();

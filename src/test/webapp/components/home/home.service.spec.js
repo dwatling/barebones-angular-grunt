@@ -2,7 +2,7 @@ describe("ExampleService", function() {
 	var service, $httpBackend;
 
 	beforeEach(function() {
-		angular.mock.module("app.components");
+		angular.mock.module("app");
 
 		inject(function($injector) {
 			service = $injector.get("HomeService");

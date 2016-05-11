@@ -1,6 +1,6 @@
-angular.module("app.routes")
+angular.module("app")
 .config(function($routeProvider) {
 	$routeProvider
-		.when("/", {controller: 'HomeController', templateUrl: 'scripts/components/home/home.tpl.html'})
+		.when("/", {template: "<home></home"})
 		.otherwise({redirectTo: '/'});
 });

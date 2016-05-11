@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	function HomeServiceFunc($http, $q) {
+	angular.module("app").service("HomeService", function($http, $q, HomeModel) {
 		this.exampleGET = function(query) {
 			var params = {
 				q: query
@@ -13,6 +13,8 @@
 				method: 'GET',
 				url: path,
 				params: params
+			}).then(function(response) {
+				return new HomeModel(response.data);
 			});
 		};
 
@@ -25,7 +27,5 @@
 				data: $.param(params)
 			});
 		};
-	}
-
-	angular.module('app.components').service('HomeService', HomeServiceFunc);
+	});
 })();

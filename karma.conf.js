@@ -27,7 +27,7 @@ module.exports = function(config) {
 		},
 		files: [
 			"node_modules/jquery/dist/jquery.js",
-			"node_modules/lodash/index.js",
+			"node_modules/lodash/lodash.js",
 			"node_modules/angular/angular.js",
 			"node_modules/angular-animate/angular-animate.js",
 			"node_modules/angular-aria/angular-aria.js",
