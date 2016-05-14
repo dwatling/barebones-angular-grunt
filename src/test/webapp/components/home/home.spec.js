@@ -1,15 +1,14 @@
-describe("Home component", function() {
-	var $rootScope, $scope, homeService, $componentController, $q;
+describe('Home component', function() {
+	var $rootScope, homeService, $componentController, $q;
 
 	beforeEach(function() {
-		angular.mock.module("app");
+		angular.mock.module('app');
 
 		inject(function($injector) {
-			homeService = $injector.get("HomeService");
-			$rootScope = $injector.get("$rootScope");
-			$componentController = $injector.get("$componentController");
-			$q = $injector.get("$q");
-			$scope = $rootScope.$new();
+			homeService = $injector.get('HomeService');
+			$rootScope = $injector.get('$rootScope');
+			$componentController = $injector.get('$componentController');
+			$q = $injector.get('$q');
 		});
 	});
 
@@ -20,8 +19,8 @@ describe("Home component", function() {
 	afterEach(function() {
 	});
 
-	describe("$onInit", function() {
-		it("should invoke ExampleService.exampleGET", function() {
+	describe('$onInit', function() {
+		it('should invoke ExampleService.exampleGET', function() {
 			var mockData = {};
 			var mockResponse = {status: 200, data: mockData};
 			var exampleServiceStub = sinon.stub(homeService, 'exampleGET').returns($q.when(mockResponse));

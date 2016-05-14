@@ -1,8 +1,8 @@
 (function() {
-	"use strict";
+	'use strict';
 
-	angular.module("app").component("home", {
-		templateUrl: "scripts/components/home/_home.tpl.html",
+	angular.module('app').component('home', {
+		templateUrl: 'scripts/components/home/_home.tpl.html',
 		controller: function(HomeService) {
 			var self = this;
 			

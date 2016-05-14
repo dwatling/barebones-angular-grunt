@@ -1,6 +1,6 @@
-angular.module("app")
-.config(function($routeProvider) {
+angular.module('app')
+.config(function ($routeProvider) {
 	$routeProvider
-		.when("/", {template: "<home></home"})
+		.when('/', {template: '<home></home'})
 		.otherwise({redirectTo: '/'});
 });

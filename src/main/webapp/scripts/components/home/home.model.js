@@ -1,7 +1,7 @@
 (function() {
-	"use strict";
+	'use strict';
 
-	angular.module("app").factory("HomeModel", function() {
+	angular.module('app').factory('HomeModel', function() {
 		function HomeModel(json) {
 			if (json === undefined) {
 				json = {};

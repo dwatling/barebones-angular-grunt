@@ -1,7 +1,7 @@
 (function() {
-	"use strict";
+	'use strict';
 
-	angular.module("app").service("HomeService", function($http, $q, HomeModel) {
+	angular.module('app').service('HomeService', function($http, $q, HomeModel) {
 		this.exampleGET = function(query) {
 			var params = {
 				q: query

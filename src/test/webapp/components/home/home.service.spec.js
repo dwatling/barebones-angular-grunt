@@ -1,12 +1,12 @@
-describe("ExampleService", function() {
+describe('ExampleService', function() {
 	var service, $httpBackend;
 
 	beforeEach(function() {
-		angular.mock.module("app");
+		angular.mock.module('app');
 
 		inject(function($injector) {
-			service = $injector.get("HomeService");
-			$httpBackend = $injector.get("$httpBackend");
+			service = $injector.get('HomeService');
+			$httpBackend = $injector.get('$httpBackend');
 		});
 	});
 
@@ -15,11 +15,11 @@ describe("ExampleService", function() {
 		$httpBackend.verifyNoOutstandingRequest();
 	});
 	
-	describe("examplePOST", function() {
-		it("should POST params", function() {
-			$httpBackend.expect("POST", "http://httpbin.org/post").respond(200, {});
+	describe('examplePOST', function() {
+		it('should POST params', function() {
+			$httpBackend.expect('POST', 'http://httpbin.org/post').respond(200, {});
 
-			service.examplePOST("TOKEN");
+			service.examplePOST('TOKEN');
 
 			$httpBackend.flush();
 		})

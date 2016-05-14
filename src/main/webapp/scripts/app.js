@@ -1,5 +1,5 @@
-angular.module("app", ["ngMaterial", "ngRoute", "app.templates"])
-	.config(function($httpProvider, $mdThemingProvider) {
+angular.module('app', ['ngMaterial', 'ngRoute', 'app.templates'])
+	.config(function ($httpProvider, $mdThemingProvider) {
 	//	$mdThemingProvider.theme('default')
 	//    	.dark();
 

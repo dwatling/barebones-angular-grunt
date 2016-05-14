@@ -1,0 +1,22 @@
+{
+    "extends": "standard",
+    "globals": {
+        "angular": true,
+        "inject": true,
+        "sinon": true
+    },
+    "env": {
+        "browser": true,
+        "jquery": true,
+        "jasmine": true
+    },
+    "rules": {
+        "indent": 0,
+        "no-trailing-spaces": 0,
+        "semi": 0,
+        "space-before-function-paren": 0
+    },
+    "plugins": [
+        "standard"
+    ]
+}
