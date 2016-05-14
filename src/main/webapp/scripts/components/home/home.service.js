@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('app').service('HomeService', function($http, $q, HomeModel) {
+	angular.module('app').service('HomeService', function($http, $httpParamSerializerJQLike, $q, HomeModel) {
 		this.exampleGET = function(query) {
 			var params = {
 				q: query
@@ -24,7 +24,7 @@
 				method: 'POST',
 				url: 'http://httpbin.org/post',
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				data: $.param(params)
+				data: $httpParamSerializerJQLike(params)
 			});
 		};
 	});
