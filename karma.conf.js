@@ -1,4 +1,8 @@
-module.exports = function(config) {
+var projectConfig = require('./project-config')
+
+var sourceFiles = projectConfig.srcDir + 'scripts/**/*.js';
+
+var karmaConfig = function(config) {
 	config.set({
 		basePath: '.',
 		frameworks: ['jasmine', 'sinon'],
@@ -12,18 +16,18 @@ module.exports = function(config) {
 		browsers: ['PhantomJS'],
 		reporters: ['dots', 'coverage', 'junit'],
 		junitReporter: {
-			outputDir: 'target/test/unit',
+			outputDir: projectConfig.outputDir + 'test/unit',
 			suite: ''
 		},
 		coverageReporter: {
-			dir: 'target/test/coverage',
+			dir: projectConfig.outputDir + 'test/coverage',
 			reporters: [
 				{type: 'html', subdir: 'html'},
 				{type: 'cobertura', subdir: '.', file: 'cobertura.xml'}
 			]
 		},
 		preprocessors: {
-			'src/main/webapp/scripts/**/*.js': ['coverage']
+			sourceFiles: ['coverage']
 		},
 		files: [
 			"node_modules/jquery/dist/jquery.js",
@@ -34,10 +38,12 @@ module.exports = function(config) {
 			"node_modules/angular-material/angular-material.js",
 			"node_modules/angular-route/angular-route.js",
 			"node_modules/angular-mocks/angular-mocks.js",
-			'src/main/webapp/scripts/**/*.js',
-			'src/test/webapp/mock.templates.js',
-			'src/test/webapp/**/*.spec.js'
+			sourceFiles,
+			projectConfig.testDir + 'mock.templates.js',
+			projectConfig.testDir + '**/*.spec.js'
 		],
 		singleRun: true
 	});
 };
+
+module.exports = karmaConfig;

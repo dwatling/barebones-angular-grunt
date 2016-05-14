@@ -1,13 +1,15 @@
-module.exports = function (grunt) {
+var projectConfig = require('./project-config')
+
+var gruntConfig = function (grunt) {
 	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		global: {
-			tempBuildFolder: 'target/build',
-			outputFolder: 'target/web',
-			sourceFolder: 'src/main/webapp'
+			tempBuildFolder: projectConfig.outputDir + 'build',
+			outputFolder:  projectConfig.outputDir + 'web',
+			sourceFolder: projectConfig.srcDir
 		},
 		sass: {
 			options: {
@@ -133,16 +135,13 @@ module.exports = function (grunt) {
 			files:  {
 				src: ["<%= global.sourceFolder %>/scripts/**/*.js"]
 		  	}
-		},
-		karma: {
-			unit: {
-				configFile: 'karma.conf.js'
-			}
 		}
 	});  
 
 	// Default task.  
 	grunt.registerTask('build', ['sass:dist', 'jshint', 'ngtemplates', 'ngAnnotate', 'uglify', 'copy:build']);
-	grunt.registerTask('test', ['karma']);
-	grunt.registerTask('default', ['build', 'test']);
+	grunt.registerTask('default', ['build']);
 };
+
+
+module.exports = gruntConfig;
