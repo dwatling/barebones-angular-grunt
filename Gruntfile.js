@@ -135,13 +135,18 @@ var gruntConfig = function (grunt) {
 			files:  {
 				src: ["<%= global.sourceFolder %>/scripts/**/*.js"]
 		  	}
+		},
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js'
+			}
 		}
 	});  
 
 	// Default task.  
 	grunt.registerTask('build', ['sass:dist', 'jshint', 'ngtemplates', 'ngAnnotate', 'uglify', 'copy:build']);
-	grunt.registerTask('default', ['build']);
+	grunt.registerTask('test', ['karma']);
+	grunt.registerTask('default', ['build', 'test']);
 };
-
 
 module.exports = gruntConfig;
