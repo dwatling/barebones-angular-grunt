@@ -7,7 +7,6 @@
     },
     "env": {
         "browser": true,
-        "jquery": true,
         "jasmine": true
     },
     "rules": {
