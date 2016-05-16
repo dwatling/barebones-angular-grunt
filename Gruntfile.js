@@ -40,7 +40,7 @@ var gruntConfig = function (grunt) {
 				}
 			},
 			templates: {
-				files: ['<%= global.sourceFolder %>/**/*.tpl.html'],
+				files: ['<%= global.sourceFolder %>/**/_*.html'],
 				tasks: ['ngtemplates', 'ngAnnotate', 'concat'],
 				options: {
 					spawn: false,
