@@ -1,22 +1,21 @@
-(function() {
-	'use strict';
-
-	angular.module('app').factory('HomeModel', function() {
-		function HomeModel(json) {
-			if (json === undefined) {
-				json = {};
-			}
-
-			this.args = json.args;
-			this.headers = json.headers;
-			this.origin = json.origin;
-			this.url = json.url;
+/* @ngInject */
+var HomeModel = function() {
+	function HomeModel(json) {
+		if (json === undefined) {
+			json = {};
 		}
 
-		HomeModel.prototype = {
-			// Add functions here
-		};
+		this.args = json.args;
+		this.headers = json.headers;
+		this.origin = json.origin;
+		this.url = json.url;
+	}
 
-		return HomeModel;
-	});
-})();
+	HomeModel.prototype = {
+		// Add functions here
+	};
+
+	return HomeModel;
+}
+
+module.exports = HomeModel;

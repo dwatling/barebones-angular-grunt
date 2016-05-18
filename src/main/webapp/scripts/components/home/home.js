@@ -1,18 +1,21 @@
-(function() {
-	'use strict';
+var angular = require('angular');
 
-	angular.module('app').component('home', {
-		templateUrl: 'scripts/components/home/_home.html',
-		controller: function(HomeService) {
-			var self = this;
-			
-			self.data = {};
-			
-			self.$onInit = function() {
-				HomeService.exampleGET().then(function(data) {
-					self.data = data;
-				});
-			};
-		}
-	});
-})();
+var home = {
+	template: require('./_home.html'),
+	/* @ngInject */
+	controller: function(HomeService) {
+		var self = this;
+		
+		self.data = {};
+		
+		self.$onInit = function() {
+			HomeService.exampleGET().then(function(data) {
+				self.data = data;
+			});
+		};
+	}
+}
+
+angular.module('home').component('home', home);
+
+module.exports = home;

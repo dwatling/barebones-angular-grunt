@@ -1,8 +1,9 @@
-angular.module('app', ['ngMaterial', 'ngRoute', 'app.templates'])
-	.config(function ($httpProvider, $mdThemingProvider) {
-	//	$mdThemingProvider.theme('default')
-	//    	.dark();
+var angular = require('angular');
+require('angular-material');
+require('angular-route');
 
-		// Insert HTTP interceptors here
-	//	$httpProvider.interceptors.push('HTTP_INTERCEPTOR');
-	});
+var app = angular.module('app', ['ngMaterial', 'ngRoute', 'home']);
+app.config(require('./routes'));
+require('./components');
+
+module.exports = app;
